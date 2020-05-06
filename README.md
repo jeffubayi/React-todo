@@ -1,3 +1,7 @@
+﻿## React Todo App
+
+Link to the sandbox is [here](https://codesandbox.io/s/react-todo-app-cb9yn)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
