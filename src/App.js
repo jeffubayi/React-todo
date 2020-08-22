@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 
-const App = () => {
+const Todo = () => {
   const [newTodo, setNewTodo] = useState('');
   const [todos, setTodos] = useState([]);
 
