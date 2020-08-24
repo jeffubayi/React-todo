@@ -1,5 +1,9 @@
 import React from "react";
- .
+import PropTypes from "prop-types";
+import Paper from "@material-ui/core/Paper";
+import List from "@material-ui/core/List";
+import ToDo from "../ToDo/ToDo";
+import ToDoEmpty from "../ToDoEmpty/ToDoEmpty";
 
 export default function TodosList(props){
     const {
@@ -13,7 +17,11 @@ export default function TodosList(props){
     const noTodos = Object.keys(todos).length === 0;
     if (noTodos) {
       return(
-          <> Al todos completed</>
+        <Paper>
+         <List>
+          <ToDoEmpty message="All Todos Completed!" />
+         </List>
+      </Paper>
       );
 };
 
