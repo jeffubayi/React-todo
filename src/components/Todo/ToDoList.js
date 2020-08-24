@@ -24,5 +24,22 @@ export default function TodosList(props){
       </Paper>
       );
 };
-
+return (
+    <Paper>
+      <List>
+        {Object.keys(todos).map((key) => (
+          <ToDo
+            key={key}
+            index={key}
+            todo={todos[key]}
+            projects={projects}
+            projectIcons={projectIcons}
+            setTodoCompleted={setTodoCompleted}
+            deleteTodo={deleteTodo}
+            updateTodo={updateTodo}
+          />
+        ))}
+      </List>
+    </Paper>
+  );
 }
