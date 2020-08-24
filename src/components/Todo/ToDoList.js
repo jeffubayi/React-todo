@@ -43,3 +43,17 @@ return (
     </Paper>
   );
 }
+
+TodosList.PropTypes ={
+  todos: PropTypes.objectOf(PropTypes.object).isRequired,
+  projects: PropTypes.shape({
+    title: PropTypes.string,
+    desc: PropTypes.string,
+    icon: PropTypes.number,
+    color: PropTypes.string,
+  }).isRequired,
+  updateTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
+  projectIcons: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setTodoCompleted: PropTypes.func.isRequired,
+};
