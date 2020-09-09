@@ -118,6 +118,15 @@ export default function ProjectsDrawer(props) {
     </span>
   );
 }
-
-
+ProjectsDrawer.propTypes = {
+    projects: PropTypes.shape({
+      title: PropTypes.string,
+      desc: PropTypes.string,
+      icon: PropTypes.number,
+      color: PropTypes.string,
+    }).isRequired,
+    addProject: PropTypes.func.isRequired,
+    updateProject: PropTypes.func.isRequired,
+    deleteProject: PropTypes.func.isRequired,
+    projectIcons: PropTypes.arrayOf(PropTypes.string).isRequired, 
 };
