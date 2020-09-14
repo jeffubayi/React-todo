@@ -47,3 +47,81 @@ export default function ProjectDialog(props) {
     };
     updateProject(index, updatedProject);
   };
+return (
+  <span>
+      <IconButton edge="end" onClick={handleClickOpen}>
+        <EditIcon />
+      </IconButton>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <form onSubmit={handleSubmit}>
+          <DialogTitle id="form-dialog-title" align="center">
+            Settings
+          </DialogTitle>
+          <DialogContent>
+            <FormControl margin="normal" fullWidth>
+              <TextField
+                autoFocus
+                required
+                id="project-title-input"
+                name="title"
+                label="Title"
+                margin="normal"
+                value={title}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl margin="normal" required fullWidth>
+              <TextField
+                required
+                id="project-desc-input"
+                name="desc"
+                label="Description"
+                margin="normal"
+                value={desc}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl margin="normal" required fullWidth>
+              <InputLabel id="project-simple-select-label">Icon</InputLabel>
+              <Select
+                name="icon"
+                labelId="icon-simple-select-label"
+                id="icon-simple-select"
+                value={icon}
+                onChange={handleChange}
+              >
+                {Object.keys(projectIcons).map((key, iconIndex) => (
+                  <MenuItem key={key} value={iconIndex}>
+                    <Box component="span" pr={1} my="auto">
+                      <Icon>{projectIcons[iconIndex]}</Icon>
+                    </Box>
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </DialogContent>
+          <DialogActions>
+            <Button type="submit" fullWidth variant="contained" color="primary">
+              Close
+            </Button>
+          </DialogActions>
+        </form>
+      </Dialog>
+    </span>
+  );
+}
+ProjectDialog.propTypes = {
+  project: PropTypes.shape({
+    title: PropTypes.string,
+    desc: PropTypes.string,
+    icon: PropTypes.number,
+    color: PropTypes.string,
+  }).isRequired,
+  index: PropTypes.string.isRequired,
+  projectIcons: PropTypes.arrayOf(PropTypes.string).isRequired,
+  updateProject: PropTypes.func.isRequired,
+};
