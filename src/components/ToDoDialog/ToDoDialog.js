@@ -215,4 +215,22 @@ export default function ToDoDialog(props) {
         </span>
       );
     }
-    
+    ToDoDialog.propTypes = {
+        todo: PropTypes.shape({
+          title: PropTypes.string,
+          desc: PropTypes.string,
+          dateEnd: PropTypes.string,
+          completed: PropTypes.bool,
+          priority: PropTypes.number,
+          projectKey: PropTypes.string,
+        }).isRequired,
+        projects: PropTypes.shape({
+          title: PropTypes.string,
+          desc: PropTypes.string,
+          icon: PropTypes.number,
+          color: PropTypes.string,
+        }).isRequired,
+        index: PropTypes.string.isRequired,
+        projectIcons: PropTypes.arrayOf(PropTypes.string).isRequired,
+        updateTodo: PropTypes.func.isRequired,
+    }; 
