@@ -22,3 +22,58 @@ import {
 } from "@material-ui/pickers";
 import Icon from "@material-ui/core/Icon";
 import { format } from "date-fns";
+
+export default function ToDoDialog(props) {
+    const [open, setOpen] = React.useState(false);
+    // Chad's suggestion. Implement this once you've got everything working:
+    // const { index: { index }, todo: { title, desc, dateEnd, projectId, priority } } = props;
+    const {
+      todo: { title, desc, dateEnd, priority, projectKey },
+      projects,
+      index,
+      projectIcons,
+      updateTodo,
+    } = props;
+  
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      handleClose();
+    };
+  
+    const handleChange = (event) => {
+      // Update the todo
+      // 1. Take a copy of the current todo
+      const updatedTodo = {
+        ...props.todo,
+        // Match the key with the "name" property of the control
+        [event.currentTarget.name]: event.currentTarget.value,
+      };
+      updateTodo(index, updatedTodo);
+    };
+  
+    const handleSelect = (event) => {
+      const updatedTodo = {
+        ...props.todo,
+        // Match the key with the "name" property of the control
+        // [event.target.name]: parseInt(event.target.value, 10),
+        [event.target.name]: event.target.value,
+      };
+      updateTodo(index, updatedTodo);
+    };
+  
+    const handleDateChange = (date) => {
+      const updatedTodo = {
+        ...props.todo,
+        // Match the key with the "name" property of the control
+        dateEnd: format(date, "MM/dd/yyyy"),
+      };
+      updateTodo(index, updatedTodo);
+    };
