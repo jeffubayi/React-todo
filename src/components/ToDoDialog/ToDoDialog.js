@@ -77,3 +77,142 @@ export default function ToDoDialog(props) {
       };
       updateTodo(index, updatedTodo);
     };
+    return (
+        <span>
+          <IconButton edge="end" onClick={handleClickOpen}>
+            <EditIcon />
+          </IconButton>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="form-dialog-title"
+          >
+            <form onSubmit={handleSubmit}>
+              <DialogTitle id="form-dialog-title" align="center">
+                Settings
+              </DialogTitle>
+              <DialogContent>
+                <FormControl margin="normal" fullWidth>
+                  <TextField
+                    autoFocus
+                    required
+                    id="standard-required1"
+                    name="title"
+                    label="Title"
+                    margin="normal"
+                    value={title}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                <FormControl margin="normal" required fullWidth>
+                  <TextField
+                    required
+                    id="standard-required2"
+                    name="desc"
+                    label="Description"
+                    margin="normal"
+                    value={desc}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                <FormControl margin="normal" required fullWidth>
+                  <InputLabel id="project-simple-select-label">Project</InputLabel>
+                  <Select
+                    name="projectKey"
+                    labelId="project-simple-select-label"
+                    id="project-simple-select"
+                    value={projectKey}
+                    onChange={handleSelect}
+                  >
+                    {console.log(projects)}
+                    {Object.keys(projects).map((key) => (
+                      <MenuItem key={key} value={key}>
+                        <Box component="span" pr={1} my="auto">
+                          <Icon>{projectIcons[projects[key].icon]}</Icon>
+                        </Box>
+                        {projects[key].title}
+                      </MenuItem>
+                    ))}
+                    {/* {Object.keys(projects).map((key) => (
+                      <MenuItem key={key} value={key}>
+                        <Box component="span" pr={1} my="auto">
+                          {projects[key] !== undefined && projects[key] !== null ? (
+                            <Icon>{projectIcons[projects[key].icon]}</Icon>
+                          ) : (
+                            <Icon>{projectIcons[0]}</Icon>
+                          )}
+                        </Box>
+                        {projects[key].title}
+                      </MenuItem>
+                    ))} */}
+                  </Select>
+                </FormControl>
+                <FormControl margin="normal" fullWidth>
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <KeyboardDatePicker
+                      disableToolbar
+                      variant="inline"
+                      format="MM/dd/yyyy"
+                      margin="normal"
+                      name="dateEnd"
+                      id="todo-edit-date-end"
+                      label="Due date"
+                      value={dateEnd}
+                      onChange={handleDateChange}
+                      KeyboardButtonProps={{
+                        "aria-label": "change date",
+                      }}
+                    />
+                  </MuiPickersUtilsProvider>
+                </FormControl>
+                <FormControl margin="normal" required fullWidth>
+                  <InputLabel id="priority-simple-select-label">
+                    Priority
+                  </InputLabel>
+                  <Select
+                    labelId="priority-simple-select-label"
+                    id="priority-simple-select"
+                    name="priority"
+                    value={priority}
+                    onChange={handleSelect}
+                  >
+                    <MenuItem value={0} name="stars0">
+                      <StarBorderIcon />
+                      <StarBorderIcon />
+                      <StarBorderIcon />
+                    </MenuItem>
+                    <MenuItem value={1} name="stars1">
+                      <StarIcon />
+                      <StarBorderIcon />
+                      <StarBorderIcon />
+                    </MenuItem>
+                    <MenuItem value={2} name="stars2">
+                      <StarIcon />
+                      <StarIcon />
+                      <StarBorderIcon />
+                    </MenuItem>
+                    <MenuItem value={3} name="stars3">
+                      <StarIcon />
+                      <StarIcon />
+                      <StarIcon />
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              </DialogContent>
+              <DialogActions>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  onSubmit={handleClose}
+                >
+                  Save
+                </Button>
+              </DialogActions>
+            </form>
+          </Dialog>
+        </span>
+      );
+    }
+    
