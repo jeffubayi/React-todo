@@ -23,6 +23,131 @@ import grey from "@material-ui/core/colors/grey";
 import blueGrey from "@material-ui/core/colors/blueGrey";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
+const primary = "400";
+const accent = "A400";
+
+const styles = () => ({
+    btnBase: {
+      height: "50px",
+      width: "50px",
+      margin: "5px",
+    },
+    red: {
+      background: red[primary],
+      "&:hover": {
+        background: red[accent],
+      },
+    },
+    pink: {
+      background: pink[primary],
+      "&:hover": {
+        background: pink[accent],
+      },
+    },
+    purple: {
+      background: purple[primary],
+      "&:hover": {
+        background: purple[accent],
+      },
+    },
+    deepPurple: {
+      background: deepPurple[primary],
+      "&:hover": {
+        background: deepPurple[accent],
+      },
+    },
+    indigo: {
+      background: indigo[primary],
+      "&:hover": {
+        background: indigo[accent],
+      },
+    },
+    blue: {
+      background: blue[primary],
+      "&:hover": {
+        background: blue[accent],
+      },
+    },
+    lightBlue: {
+      background: lightBlue[primary],
+      "&:hover": {
+        background: lightBlue[accent],
+      },
+    },
+    cyan: {
+      background: cyan[primary],
+      "&:hover": {
+        background: cyan[accent],
+      },
+    },
+    teal: {
+      background: teal[primary],
+      "&:hover": {
+        background: teal[accent],
+      },
+    },
+    green: {
+      background: green[primary],
+      "&:hover": {
+        background: green[accent],
+      },
+    },
+    lightGreen: {
+      background: lightGreen[primary],
+      "&:hover": {
+        background: lightGreen[accent],
+      },
+    },
+    lime: {
+      background: lime[primary],
+      "&:hover": {
+        background: lime[accent],
+      },
+    },
+    yellow: {
+      background: yellow[primary],
+      "&:hover": {
+        background: yellow[accent],
+      },
+    },
+    amber: {
+      background: amber[primary],
+      "&:hover": {
+        background: amber[accent],
+      },
+    },
+    orange: {
+      background: orange[primary],
+      "&:hover": {
+        background: orange[accent],
+      },
+    },
+    deepOrange: {
+      background: deepOrange[primary],
+      "&:hover": {
+        background: deepOrange[accent],
+      },
+    },
+    brown: {
+      background: brown[primary],
+      "&:hover": {
+        background: brown[accent],
+      },
+    },
+    grey: {
+      background: grey[primary],
+      "&:hover": {
+        background: grey[accent],
+      },
+    },
+    blueGrey: {
+      background: blueGrey[primary],
+      "&:hover": {
+        background: blueGrey[accent],
+      },
+    },
+  });
+
 const colorList = {
     pink,
     red,
