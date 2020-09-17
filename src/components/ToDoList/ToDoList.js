@@ -24,6 +24,7 @@ export default function TodosList(props){
             </Paper>
           );
         }
+        return(
         <Paper>
         <List>
           {Object.keys(todos).map((key) => (
@@ -42,3 +43,16 @@ export default function TodosList(props){
       </Paper>
     );
   }
+  ToDosList.propTypes = {
+    todos: PropTypes.objectOf(PropTypes.object).isRequired,
+    projects: PropTypes.shape({
+      title: PropTypes.string,
+      desc: PropTypes.string,
+      icon: PropTypes.number,
+      color: PropTypes.string,
+    }).isRequired,
+    updateTodo: PropTypes.func.isRequired,
+    deleteTodo: PropTypes.func.isRequired,
+    projectIcons: PropTypes.arrayOf(PropTypes.string).isRequired,
+    setTodoCompleted: PropTypes.func.isRequired,
+  };
