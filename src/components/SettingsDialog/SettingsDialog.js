@@ -20,3 +20,39 @@ export default function SettingsDialog(props) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  return (
+    <div>
+      <IconButton edge="start" color="inherit" onClick={handleClickOpen}>
+        <SettingsIcon />
+      </IconButton>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">Settings</DialogTitle>
+        <DialogContent>
+          {/* <DialogContentText>Color:</DialogContentText> */}
+          {/* <Typography variant="h6" component="h1" gutterBottom>
+            Theme Color:
+          </Typography> */}
+          <ThemeColorOptions
+            changeThemeColor={changeThemeColor}
+            currentColor={currentColor}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={handleClose}
+            fullWidth
+            variant="contained"
+            color="primary"
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+}
