@@ -56,3 +56,7 @@ export default function SettingsDialog(props) {
     </div>
   );
 }
+SettingsDialog.propTypes = {
+    changeThemeColor: PropTypes.func.isRequired,
+    currentColor: PropTypes.string.isRequired,
+  };
