@@ -201,4 +201,12 @@ const colorList = {
       );
     }
   }
+  ThemeColorOptions.propTypes = {
+    changeThemeColor: PropTypes.func.isRequired,
+    currentColor: PropTypes.string.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    classes: PropTypes.object.isRequired,
+  };
+  
+  export default withStyles(styles)(ThemeColorOptions);
   
