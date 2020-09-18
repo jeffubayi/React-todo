@@ -169,3 +169,36 @@ const colorList = {
     grey,
     blueGrey,
   };
+  class ThemeColorOptions extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {};
+    }
+  
+    setNewColor = (newColor) => {
+      const { changeThemeColor } = this.props;
+      changeThemeColor(newColor);
+    };
+  
+    render() {
+      const { classes, currentColor } = this.props;
+      return (
+        <>
+          {Object.keys(colorList).map((key) => (
+            <Button
+              key={key}
+              variant="contained"
+              className={[classes.btnBase, classes[key]].join(" ")}
+              onClick={() => this.setNewColor(key)}
+            >
+              {currentColor === key ? (
+                <CheckCircleIcon color="secondary" />
+              ) : null}
+              {null}
+            </Button>
+          ))}
+        </>
+      );
+    }
+  }
+  
