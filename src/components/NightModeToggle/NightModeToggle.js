@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Grid } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
@@ -19,3 +19,38 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: "25px",
     },
   }));
+
+  export default function NightModeToggle(props) {
+    const [state, setState] = React.useState({
+      checkedA: true,
+    });
+  
+    const handleChange = (name) => (event) => {
+      setState({ ...state, [name]: event.target.checked });
+      props.changeThemeMode();
+    };
+  
+    const classes = useStyles();
+  
+    return (
+      <Box>
+        <Grid
+          container
+          direction="row"
+          alignItems="center"
+          justify="flex-end"
+          className={classes.grid}
+        >
+          <Brightness5Icon />
+          <Switch
+            checked={state.checkedA}
+            onChange={handleChange("checkedA")}
+            value="checkedA"
+            inputProps={{ "aria-label": "secondary checkbox" }}
+          />
+          <Brightness4Icon />
+        </Grid>
+      </Box>
+    );
+  }
+  
