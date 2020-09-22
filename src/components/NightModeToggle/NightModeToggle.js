@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import PropTypes from "prop-type
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Grid } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
