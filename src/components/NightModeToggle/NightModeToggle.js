@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import PropTypes from "prop-type
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Grid } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
@@ -54,3 +55,6 @@ const useStyles = makeStyles((theme) => ({
     );
   }
   
+  NightModeToggle.propTypes = {
+    changeThemeMode: PropTypes.func.isRequired,
+  };
