@@ -78,4 +78,8 @@ class ListPicker extends React.Component {
         );
       }
     }
+    ListPicker.propTypes = {
+        history: PropTypes.object.isRequired,
+      };
+      export default ListPicker;
     
