@@ -21,3 +21,61 @@ class ListPicker extends React.Component {
       // 3. Change the page to /store/whatever-they-entered
       this.props.history.push(`/list/${listName}`);
     };
+    render() {
+        return (
+          <>
+            <ThemeProvider theme={createMuiTheme(theme)}>
+              <CssBaseline />
+              <Container maxWidth="sm">
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  style={{ minHeight: "100vh" }}
+                >
+                  <Box>
+                    <Paper align="center">
+                      <form onSubmit={this.goToList} className="List-form">
+                        <Grid
+                          container
+                          spacing={3}
+                          direction="column"
+                          alignItems="center"
+                          justify="center"
+                          className="List-grid"
+                        >
+                          <Grid item xs={12} spacing={3}>
+                            <Typography variant="h4" component="h2">
+                              To Do List
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={12} spacing={3}>
+                            <input
+                              type="text"
+                              ref={this.myInput}
+                              required
+                              placeholder="To Do List"
+                              defaultValue={getListName()}
+                            />
+                          </Grid>
+                          <Grid item xs={12} spacing={3}>
+                            <Button
+                              type="submit"
+                              variant="contained"
+                              color="primary"
+                            >
+                              Enter
+                            </Button>
+                          </Grid>
+                        </Grid>
+                      </form>
+                    </Paper>
+                  </Box>
+                </Grid>
+              </Container>
+            </ThemeProvider>
+          </>
+        );
+      }
+    }
+    
