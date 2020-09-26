@@ -23,3 +23,59 @@ import { format } from "date-fns";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import FormHelperText from "@material-ui/core/FormHelperText";
+
+class AddToDo extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        open: false,
+        todo: {
+          title: "",
+          desc: "",
+          priority: 0,
+          dateBegin: format(new Date(), "MM/dd/yyyy"),
+          dateEnd: format(new Date(), "MM/dd/yyyy"),
+          completed: false,
+          projectKey: "",
+        },
+        hasError: false,
+      };
+    }
+    handleToggle = () => {
+        this.setState((previousState) => ({ open: !previousState.open }));
+      };
+    
+      handleSubmit = (event) => {
+        const { todo } = this.state;
+        const { projectKey } = todo;
+        const { addTodo } = this.props;
+        event.preventDefault();
+        this.setState({ hasError: false });
+        if (!projectKey) {
+          this.setState({ hasError: true });
+        } else {
+          addTodo(todo);
+          this.handleToggle();
+        }
+      };
+    
+      handleChange = (name) => ({ target: { value } }) => {
+        this.setState((previousState) => {
+          const todo = {
+            ...previousState.todo,
+            [name]: value,
+          };
+          return { todo };
+        });
+      };
+    
+      handleDateChange = (date) => {
+        this.setState((previousState) => {
+          const todo = {
+            ...previousState.todo,
+            dateEnd: format(date, "MM/dd/yyyy"),
+          };
+          return { todo };
+        });
+      };
+      
