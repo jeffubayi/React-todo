@@ -14,3 +14,39 @@ import MenuItem from "@material-ui/core/MenuItem";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import IconButton from "@material-ui/core/IconButton";
 import Icon from "@material-ui/core/Icon";
+
+class AddProject extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        open: false,
+        project: {
+          title: "",
+          desc: "",
+          icon: 0,
+        },
+      };
+    }
+  
+    handleToggle = () => {
+      this.setState((previousState) => ({ open: !previousState.open }));
+    };
+  
+    handleSubmit = (event) => {
+      const { addProject } = this.props;
+      const { project } = this.state;
+      event.preventDefault();
+      addProject(project);
+      this.handleToggle();
+    };
+  
+    handleChange = (name) => ({ target: { value } }) => {
+      this.setState((previousState) => {
+        const project = {
+          ...previousState.project,
+          [name]: value,
+        };
+        return { project };
+      });
+    };
+  
