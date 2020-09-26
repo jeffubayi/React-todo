@@ -133,3 +133,9 @@ class AddProject extends React.Component {
     );
   }
 }
+AddProject.propTypes = {
+  addProject: PropTypes.func.isRequired,
+  projectIcons: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+export default AddProject;
