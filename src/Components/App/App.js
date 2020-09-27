@@ -33,3 +33,20 @@ import ToDoListAppBar from "../ToDoListAppBar/ToDoListAppBar";
 import AddToDo from "../AddToDo/AddToDo";
 import { generateId } from "../../helpers";
 import base from "../../base";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: {},
+      projects: {},
+      themeMode: "dark",
+      themeColors: {
+        color: "orange",
+        primaryMain: App.colors.orange[400], // Main button colour
+        primaryDark: App.colors.orange.A700, // Highlight colour for dark mode
+        secondaryMain: App.colors.orange[700], // Secondary button colour
+      },
+    };
+  }
+
