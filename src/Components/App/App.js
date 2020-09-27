@@ -49,4 +49,154 @@ class App extends React.Component {
       },
     };
   }
+  componentDidMount() {
+    const { params } = this.props.match;
+    this.projects = base.syncState(`${params.listId}/projects`, {
+      context: this,
+      state: "projects",
+    });
+    this.todos = base.syncState(`${params.listId}/todos`, {
+      context: this,
+      state: "todos",
+    });
+    /*     this.themeMode = base.syncState(`${params.listId}/themeMode`, {
+      context: this,
+      state: "themeMode",
+    }); */
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.todos);
+    base.removeBinding(this.projects);
+  }
+
+  setTodoCompleted = (key) => {
+    this.setState((previousState) => {
+      const tempTodos = { ...previousState.todos };
+      tempTodos[key] = {
+        ...tempTodos[key],
+        completed: !tempTodos[key].completed,
+      };
+      return { todos: tempTodos };
+    });
+  };
+
+  addTodo = (newTodo) => {
+    const todos = { ...this.state.todos };
+    const newKey = generateId("todo", 1000, 9999);
+    todos[newKey] = newTodo;
+    this.setState({ todos });
+  };
+
+  updateTodo = (key, updatedTodo) => {
+    this.setState((previousState) => {
+      const todos = { ...previousState.todos };
+      todos[key] = updatedTodo;
+      return { todos };
+    });
+  };
+
+  deleteTodo = (key) => {
+    const todos = { ...this.state.todos };
+    todos[key] = null;
+    this.setState({ todos });
+  };
+
+  deleteTodosFromProject = (currProjectKey) => {
+    const todos = { ...this.state.todos };
+    Object.keys(todos).map((curr) => {
+      if (todos[curr].projectKey === currProjectKey) {
+        todos[curr] = null;
+      }
+      return true;
+    });
+    this.setState({ todos });
+  };
+
+  addProject = (newProject) => {
+    this.setState((previousState) => {
+      const tempProjects = { ...previousState.projects };
+      const newKey = generateId("proj", 1000, 9999);
+      tempProjects[newKey] = newProject;
+      return { projects: tempProjects };
+    });
+  };
+
+  updateProject = (key, updatedProject) => {
+    this.setState((previousState) => {
+      const projects = { ...previousState.projects };
+      projects[key] = updatedProject;
+      return { projects };
+    });
+  };
+
+  deleteProject = (key) => {
+    this.deleteTodosFromProject(key);
+    const projects = { ...this.state.projects };
+    projects[key] = null;
+    this.setState({ projects });
+  };
+
+  changeThemeMode = () => {
+    this.setState((previousState) => {
+      const { themeMode } = previousState;
+      return themeMode === "dark"
+        ? { themeMode: "light" }
+        : { themeMode: "dark" };
+    });
+  };
+
+  changeThemeColor = (color) => {
+    const { colors } = App;
+    const primaryMain = colors[color]["400"];
+    const primaryDark = colors[color]["A200"];
+    const secondaryMain = colors[color]["500"];
+    this.setState({
+      themeColors: { color, primaryMain, primaryDark, secondaryMain },
+    });
+  };
+
+  loadSampleData = () => {
+    this.setState({ todos: sampleTodos });
+    this.setState({ projects: sampleProjects });
+  };
+
+  /*   componentDidMount = () => {
+    this.loadSampleData();
+  }; */
+
+  static projectIcons = [
+    "face",
+    "fastfood",
+    "favorite",
+    "fitness_center",
+    "home_work",
+    "local_grocery_store",
+    "menu_book",
+    "sports_esports",
+    "sports_football",
+    "work",
+  ];
+
+  static colors = {
+    pink,
+    red,
+    blue,
+    indigo,
+    purple,
+    deepPurple,
+    lightBlue,
+    cyan,
+    teal,
+    green,
+    lightGreen,
+    lime,
+    yellow,
+    amber,
+    orange,
+    deepOrange,
+    brown,
+    grey,
+    blueGrey,
+  };
 
