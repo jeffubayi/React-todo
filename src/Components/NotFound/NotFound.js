@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 
 const NotFound = () => (
     <div><h2>404 page</h2></div>
