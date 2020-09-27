@@ -199,4 +199,77 @@ class App extends React.Component {
     grey,
     blueGrey,
   };
+  render() {
+    const { themeMode, themeColors, todos, projects } = this.state;
+    const themeSettings = {
+      palette: {
+        type: themeMode,
+        primary: {
+          main: themeColors.primaryMain,
+          light: "#ffd449",
+          dark: themeColors.primaryDark,
+          contrastText: "#000000",
+        },
+        secondary: {
+          main: themeColors.secondaryMain,
+          light: "#ffb644",
+          dark: "#c55600",
+          contrastText: "#000000",
+        },
+        error: {
+          main: red.A400,
+        },
+      },
+    };
+    return (
+      <ThemeProvider theme={createMuiTheme(themeSettings)}>
+        <CssBaseline />
+        <ToDoListAppBar
+          projects={projects}
+          projectIcons={App.projectIcons}
+          addProject={this.addProject}
+          updateProject={this.updateProject}
+          deleteProject={this.deleteProject}
+          currentColor={themeColors.color}
+          changeThemeMode={this.changeThemeMode}
+          changeThemeColor={this.changeThemeColor}
+          themeColors={App.colors}
+          appBarTitle="To Do List"
+        />
+        <Container maxWidth="sm">
+          <Box my={4}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.loadSampleData}
+            >
+              Load Demo Data
+            </Button>{" "}
+            <br />
+            <br />
+            <ToDoList
+              todos={todos}
+              projects={projects}
+              projectIcons={App.projectIcons}
+              setTodoCompleted={this.setTodoCompleted}
+              deleteTodo={this.deleteTodo}
+              updateTodo={this.updateTodo}
+            />
+            <Copyright
+              urlText="To Do List"
+              urlLink="https://www.github.com/martink-rsa/"
+            />
+          </Box>
+        </Container>
+        <AddToDo
+          projects={projects}
+          projectIcons={App.projectIcons}
+          addTodo={this.addTodo}
+          projectDefault={Object.keys(projects)[0]}
+        />
+      </ThemeProvider>
+    );
+  }
+}
 
+export default App;
