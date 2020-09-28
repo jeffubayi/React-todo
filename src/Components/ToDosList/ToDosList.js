@@ -5,7 +5,7 @@ import List from "@material-ui/core/List";
 import ToDo from "../ToDo/ToDo";
 import ToDoEmpty from "../ToDoEmpty/ToDoEmpty";
 
-export default function TodosList(props){
+const TodosList = (props)=>{
     const {
         todos,
         projects,
@@ -56,3 +56,4 @@ export default function TodosList(props){
     projectIcons: PropTypes.arrayOf(PropTypes.string).isRequired,
     setTodoCompleted: PropTypes.func.isRequired,
   };
+  export default ToDosList;
