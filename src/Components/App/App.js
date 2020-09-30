@@ -1,5 +1,3 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable object-curly-newline */
 import React from "react";
 import "./App.css";
 import Container from "@material-ui/core/Container";
@@ -49,6 +47,7 @@ class App extends React.Component {
       },
     };
   }
+
   componentDidMount() {
     const { params } = this.props.match;
     this.projects = base.syncState(`${params.listId}/projects`, {
@@ -199,6 +198,7 @@ class App extends React.Component {
     grey,
     blueGrey,
   };
+
   render() {
     const { themeMode, themeColors, todos, projects } = this.state;
     const themeSettings = {
